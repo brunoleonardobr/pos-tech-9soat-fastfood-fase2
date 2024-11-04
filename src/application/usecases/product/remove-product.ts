@@ -1,6 +1,6 @@
 import { ERROR_MESSAGES } from "../../enums/error-messages.enum";
 import ProductNotFoundException from "../../exceptions/product-not-found.exception";
-import ProductRepository from "../../repository/product-repository";
+import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class DeleteProduct implements UseCase {

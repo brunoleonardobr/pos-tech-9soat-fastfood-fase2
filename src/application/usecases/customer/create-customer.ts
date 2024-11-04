@@ -1,7 +1,7 @@
 import Customer from "../../../domain/entities/customer";
 import { ERROR_MESSAGES } from "../../enums/error-messages.enum";
 import CustomerAlreadyExistsException from "../../exceptions/customer-already-exists.exception";
-import CustomerRepository from "../../repository/customer-repository";
+import CustomerRepository from "../../repositories/customer-repository";
 
 export default class CreateCustomer {
   constructor(readonly customerRepository: CustomerRepository) {}

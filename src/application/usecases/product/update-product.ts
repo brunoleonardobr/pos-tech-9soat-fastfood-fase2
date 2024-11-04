@@ -1,6 +1,6 @@
 import { ERROR_MESSAGES } from "../../enums/error-messages.enum";
 import InvalidParameterException from "../../exceptions/invalid-parameter.exception";
-import ProductRepository from "../../repository/product-repository";
+import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class UpdateProduct implements UseCase {

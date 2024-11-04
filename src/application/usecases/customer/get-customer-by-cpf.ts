@@ -1,4 +1,4 @@
-import CustomerRepository from "../../repository/customer-repository";
+import CustomerRepository from "../../repositories/customer-repository";
 
 export default class GetCustomerByCpf {
   constructor(readonly customerRepository: CustomerRepository) {}
