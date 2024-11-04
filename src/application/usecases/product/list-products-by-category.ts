@@ -1,5 +1,5 @@
 import ProductsByCategoryNotFoundException from "../../exceptions/products-by-category-not-foud.exception";
-import ProductRepository from "../../repository/product-repository";
+import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class ListProductsByCategory implements UseCase {

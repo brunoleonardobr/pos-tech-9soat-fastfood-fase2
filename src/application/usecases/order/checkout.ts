@@ -3,10 +3,10 @@ import CustomerNotFoundException from "../../exceptions/customer-not-found.excep
 import InvalidParameterException from "../../exceptions/invalid-parameter.exception";
 import OrderNotSavedException from "../../exceptions/order-not-saved.exception";
 import ProductNotFoundException from "../../exceptions/product-not-found.exception";
-import CustomerRepository from "../../repository/customer-repository";
-import OrderItemRepository from "../../repository/order-item-repository";
-import { OrderRepository } from "../../repository/order-repository";
-import ProductRepository from "../../repository/product-repository";
+import CustomerRepository from "../../repositories/customer-repository";
+import OrderItemRepository from "../../repositories/order-item-repository";
+import { OrderRepository } from "../../repositories/order-repository";
+import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class Checkout implements UseCase {

@@ -1,6 +1,6 @@
 import OrdersNotFoundException from "../../exceptions/orders-not-found.exception";
-import OrderItemRepository from "../../repository/order-item-repository";
-import { OrderRepository } from "../../repository/order-repository";
+import OrderItemRepository from "../../repositories/order-item-repository";
+import { OrderRepository } from "../../repositories/order-repository";
 import UseCase from "../use-case";
 
 export default class ListOrders implements UseCase {

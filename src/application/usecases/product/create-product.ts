@@ -1,6 +1,6 @@
 import { Product } from "../../../domain/entities/product";
 import ProductAlreadyExists from "../../exceptions/product-already-exists.exception";
-import ProductRepository from "../../repository/product-repository";
+import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class CreateProduct implements UseCase {
