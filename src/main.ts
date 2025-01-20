@@ -21,6 +21,8 @@ import {
   OrderRepositoryDatabase,
   ProductRepositoryDatabase,
 } from "./infra/repositories";
+import GetStatusOrder from "./application/usecases/order/get-status-order";
+import ProcessPayment from "./application/usecases/payment/process-order";
 
 (async () => {
   const productRepository = new ProductRepositoryDatabase();
@@ -42,6 +44,8 @@ import {
     createCustomer: new CreateCustomer(customerRepository),
     getCustomerByCpf: new GetCustomerByCpf(customerRepository),
     listOrders: new ListOrders(orderRepository, orderItemRepository),
+    getStatusOrder: new GetStatusOrder(orderRepository),
+    processPayment: new ProcessPayment(orderRepository),
   };
   const httpServer = new ExpressAdapter();
   const registry = Registry.getInstance();

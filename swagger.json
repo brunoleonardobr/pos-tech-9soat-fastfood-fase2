@@ -270,7 +270,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Order created successfully",
             "content": {
               "application/json": {
@@ -319,6 +319,92 @@
                         }
                       },
                       "total": { "type": "number" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{id}/status": {
+      "get": {
+        "summary": "Get status of an order",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": ["order"],
+        "responses": {
+          "200": {
+            "description": "Order status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "20271ae8-07db-41ff-af29-4ac4e0d341e0"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "approved"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/payment/process": {
+      "post": {
+        "summary": "Process payment",
+        "tags": ["webhooks"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "string",
+                    "description": "ID of the order"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "Status of the payment"
+                  }
+                },
+                "required": ["orderId", "status"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "order": {
+                      "type": "object",
+                      "description": "Details of the created order"
                     }
                   }
                 }

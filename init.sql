@@ -19,8 +19,10 @@ INSERT INTO `products` (`id`,`description`,`price`,`category`) VALUES ('edb50ed0
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` CHAR(36) PRIMARY KEY,
   `client_id` CHAR(36) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  `status` varchar(45) NOT NULL
+  `total` DECIMAL(10,2) NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS `order_items` (

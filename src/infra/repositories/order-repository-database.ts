@@ -18,7 +18,11 @@ export default class OrderRepositoryDatabase implements OrderRepository {
   }
 
   async list(): Promise<any> {
-    let statement = `SELECT * FROM orders;`;
+    let statement = `SELECT * FROM orders
+                    WHERE status != 'finished'
+                    ORDER BY 
+                    FIELD(status, 'ready', 'progress', 'received'),
+                    created_at ASC;`;
     const [ordersData] = await this.database?.query(statement, []);
     const orders: any[] = [];
     if (!ordersData.length) return orders;
@@ -31,5 +35,22 @@ export default class OrderRepositoryDatabase implements OrderRepository {
       });
     }
     return orders;
+  }
+
+  async findById(id: string): Promise<any> {
+    let statement = `SELECT * FROM orders WHERE id = ?;`;
+    const [order] = await this.database?.query(statement, [id]);
+    if (!order.length) return null;
+    return {
+      id: order[0].id,
+      clientId: order[0].client_id,
+      total: order[0].total,
+      status: order[0].status,
+    };
+  }
+
+  async updateStatus(order: Order): Promise<any> {
+    let statement = `UPDATE orders SET status = ? WHERE id = ?;`;
+    return this.database?.query(statement, [order.getStatus(), order.id]);
   }
 }

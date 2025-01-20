@@ -1,4 +1,5 @@
 import Checkout from "../../application/usecases/order/checkout";
+import GetStatusOrder from "../../application/usecases/order/get-status-order";
 import ListOrders from "../../application/usecases/order/list-orders";
 import { inject } from "../di/registry";
 import HttpServer from "../http/http-server";
@@ -6,13 +7,19 @@ import CheckoutDTO from "./dto/checkout.dto";
 
 export default class OrderController {
   @inject("httpServer")
-  httpServer?: HttpServer;
+  private readonly httpServer?: HttpServer;
   @inject("checkout")
-  checkout?: Checkout;
+  private readonly checkout?: Checkout;
   @inject("listOrders")
-  listOrders?: ListOrders;
+  private readonly listOrders?: ListOrders;
+  @inject("getStatusOrder")
+  private readonly getStatusOrder?: GetStatusOrder;
 
   constructor() {
+    this.registerRoutes();
+  }
+
+  private registerRoutes() {
     this.httpServer?.register(
       "post",
       "/checkout",
@@ -26,5 +33,14 @@ export default class OrderController {
       const orders = await this.listOrders?.execute();
       return orders;
     });
+    this.httpServer?.register(
+      "get",
+      "/orders/:id/status",
+      async (params: any) => {
+        const { id } = params;
+        const orders = await this.getStatusOrder?.execute(id);
+        return orders;
+      }
+    );
   }
 }
