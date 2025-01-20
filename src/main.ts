@@ -23,6 +23,8 @@ import {
 } from "./infra/repositories";
 import GetStatusOrder from "./application/usecases/order/get-status-order";
 import ProcessPayment from "./application/usecases/payment/process-order";
+import UpdateStatusOrder from "./application/usecases/order/update-status-order";
+import PaymentController from "./infra/controllers/payment-controller";
 
 (async () => {
   const productRepository = new ProductRepositoryDatabase();
@@ -46,6 +48,7 @@ import ProcessPayment from "./application/usecases/payment/process-order";
     listOrders: new ListOrders(orderRepository, orderItemRepository),
     getStatusOrder: new GetStatusOrder(orderRepository),
     processPayment: new ProcessPayment(orderRepository),
+    updateStatusOrder: new UpdateStatusOrder(orderRepository),
   };
   const httpServer = new ExpressAdapter();
   const registry = Registry.getInstance();
@@ -57,5 +60,6 @@ import ProcessPayment from "./application/usecases/payment/process-order";
   new ProductsController();
   new OrderController();
   new CustomerController();
+  new PaymentController();
   httpServer.listen(3000);
 })();

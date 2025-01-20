@@ -10,7 +10,7 @@ export default class GetStatusOrder implements UseCase {
     if (!order) throw new OrdersNotFoundException();
     return {
       id: order.id,
-      status: order.status,
+      status: order.getStatus(),
     };
   }
 }

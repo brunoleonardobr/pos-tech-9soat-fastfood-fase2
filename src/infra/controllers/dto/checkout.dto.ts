@@ -1,3 +1,5 @@
+import InvalidParameterException from "../../../application/exceptions/invalid-parameter.exception";
+
 class ItemsDto {
   constructor(readonly productId: string, readonly quantity: number) {}
 }
@@ -9,7 +11,7 @@ export default class CheckoutDTO {
 
   private validate() {
     if (!this.clientId) {
-      throw new Error("Client id is required");
+      throw new InvalidParameterException("Client id is required");
     }
   }
 }

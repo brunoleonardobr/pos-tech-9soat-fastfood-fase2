@@ -1,5 +1,5 @@
-import { Category } from "../../../application/enums/category.enum";
-import { ERROR_MESSAGES } from "../../../application/enums/error-messages.enum";
+import { Category } from "../../../domain/enums/category.enum";
+import { ERROR_MESSAGES } from "../../../domain/enums/error-messages.enum";
 import InvalidParameterException from "../../../application/exceptions/invalid-parameter.exception";
 
 export default class CreateProductDTO {

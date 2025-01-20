@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "../../enums/error-messages.enum";
+import { ERROR_MESSAGES } from "../../../domain/enums/error-messages.enum";
 import InvalidParameterException from "../../exceptions/invalid-parameter.exception";
 import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";

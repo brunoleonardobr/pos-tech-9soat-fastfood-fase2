@@ -18,15 +18,23 @@ export default class OrderItemRepositoryDatabase
       orderItem.quantity,
     ]);
   }
-  async getByOrderId(orderId: string): Promise<OrderItem[]> {
+  async getByOrderId(orderId: string): Promise<any> {
     let statement = `SELECT * FROM order_items WHERE order_id = ?;`;
     const [orderItemsData] = await this.database?.query(statement, [orderId]);
-    return orderItemsData.map((orderItemData: any) => ({
-      id: orderItemData.id,
-      productId: orderItemData.product_id,
-      orderId: orderItemData.order_id,
-      price: orderItemData.price,
-      quantity: orderItemData.quantity,
-    }));
+    let orderItems = [];
+    for (const orderItemData of orderItemsData) {
+      statement = `SELECT description, category FROM products WHERE id = ?;`;
+      const [productData] = await this.database?.query(statement, [
+        orderItemData.product_id,
+      ]);
+      orderItemData.id = orderItemData.id.toString();
+      orderItemData.product_id = orderItemData.product_id.toString();
+      orderItems.push({
+        product: productData[0].description,
+        price: orderItemData.price,
+        quantity: orderItemData.quantity,
+      });
+    }
+    return orderItems;
   }
 }

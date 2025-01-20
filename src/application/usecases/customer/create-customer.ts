@@ -1,5 +1,5 @@
 import Customer from "../../../domain/entities/customer";
-import { ERROR_MESSAGES } from "../../enums/error-messages.enum";
+import { ERROR_MESSAGES } from "../../../domain/enums/error-messages.enum";
 import CustomerAlreadyExistsException from "../../exceptions/customer-already-exists.exception";
 import CustomerRepository from "../../repositories/customer-repository";
 

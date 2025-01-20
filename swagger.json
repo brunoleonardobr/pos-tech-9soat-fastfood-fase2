@@ -155,7 +155,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["LANCHE", "BEBIDA", "SOBREMESA", "ACOMPANHAMENTO"]
             }
           }
         ],
@@ -357,6 +358,61 @@
                     "status": {
                       "type": "string",
                       "example": "approved"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{id}/status/{status}": {
+      "put": {
+        "summary": "Update order status",
+        "tags": ["order"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Order ID"
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["received", "progress", "ready", "finished"]
+            },
+            "description": "New status of the order"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 }

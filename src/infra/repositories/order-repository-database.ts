@@ -41,12 +41,7 @@ export default class OrderRepositoryDatabase implements OrderRepository {
     let statement = `SELECT * FROM orders WHERE id = ?;`;
     const [order] = await this.database?.query(statement, [id]);
     if (!order.length) return null;
-    return {
-      id: order[0].id,
-      clientId: order[0].client_id,
-      total: order[0].total,
-      status: order[0].status,
-    };
+    return new Order(order[0].id, order[0].client_id, order[0].status);
   }
 
   async updateStatus(order: Order): Promise<any> {

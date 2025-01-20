@@ -1,4 +1,5 @@
 import Order from "../../../domain/entities/order";
+import { OrderStatus } from "../../../domain/enums/status.enum";
 import CustomerNotFoundException from "../../exceptions/customer-not-found.exception";
 import InvalidParameterException from "../../exceptions/invalid-parameter.exception";
 import OrderNotSavedException from "../../exceptions/order-not-saved.exception";
@@ -25,7 +26,6 @@ export default class Checkout implements UseCase {
     }
     const order = Order.create(client.id);
     await this.addItemsToOrder(input, order);
-    order.setStatus("received");
     await this.saveOrder(order);
     await this.saveOrderItems(order);
     return { id: order.id, total: order.getTotal() };

@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "../../../application/enums/error-messages.enum";
+import { ERROR_MESSAGES } from "../../../domain/enums/error-messages.enum";
 import InvalidParameterException from "../../../application/exceptions/invalid-parameter.exception";
 
 export class CreateCustomerDTO {
