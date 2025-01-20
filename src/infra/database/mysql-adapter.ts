@@ -4,7 +4,7 @@ import "dotenv/config";
 
 export default class MysqlAdapter implements DatabaseConnection {
   connection: any;
-  retryDelay: number = 5000; // Atraso entre tentativas em milissegundos (5 segundos)
+  retryDelay: number = 5000;
   constructor() {
     this.connect();
   }
@@ -13,10 +13,10 @@ export default class MysqlAdapter implements DatabaseConnection {
     let retries = 0;
     while (true) {
       try {
-        const host = process.env.DB_HOST || "mysql";
-        const user = process.env.DB_USERNAME || "root";
-        const password = process.env.DB_PASSWORD || "admin";
-        const database = process.env.DB_NAME || "fastfood";
+        const host = process.env.DB_HOST;
+        const user = process.env.DB_USERNAME;
+        const password = process.env.DB_PASSWORD;
+        const database = process.env.DB_NAME;
 
         this.connection = await mysql.createConnection({
           host,
