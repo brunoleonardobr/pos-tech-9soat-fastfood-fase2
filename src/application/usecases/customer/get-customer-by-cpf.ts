@@ -1,9 +1,8 @@
-import CustomerRepository from "../../repositories/customer-repository";
-
+import ICustomerGateway from "../../../interfaces/customer.gateway";
 export default class GetCustomerByCpf {
-  constructor(readonly customerRepository: CustomerRepository) {}
+  constructor(readonly customerGateway: ICustomerGateway) {}
 
   async execute({ cpf }: { cpf: string }) {
-    return this.customerRepository.getByCpf(cpf);
+    return this.customerGateway.getByCpf(cpf);
   }
 }

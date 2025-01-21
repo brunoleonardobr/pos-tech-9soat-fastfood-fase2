@@ -1,7 +1,7 @@
 import { inject } from "../di/registry";
 import HttpServer from "../http/http-server";
 
-export default class HealthCheckController {
+export default class HealthCheckApiController {
   @inject("httpServer")
   httpServer?: HttpServer;
 

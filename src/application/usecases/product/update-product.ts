@@ -1,19 +1,19 @@
 import { ERROR_MESSAGES } from "../../../domain/enums/error-messages.enum";
+import ProductGateway from "../../../gateways/product.gateway";
 import InvalidParameterException from "../../exceptions/invalid-parameter.exception";
-import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class UpdateProduct implements UseCase {
-  constructor(readonly repository: ProductRepository) {}
+  constructor(readonly productGateway: ProductGateway) {}
 
   async execute(input: Input) {
     this.validateInput(input);
-    const productExists = await this.repository.getById({ id: input.id });
+    const productExists = await this.productGateway.getById({ id: input.id });
     if (!productExists) {
       throw new InvalidParameterException(ERROR_MESSAGES.PRODUCT_NOT_FOUND);
     }
     const updateData = this.mapUpdateData(input);
-    await this.repository.update(updateData);
+    await this.productGateway.update(updateData);
   }
 
   private validateInput(input: Input): void {
@@ -49,7 +49,7 @@ type Input = {
 
 type UpdateData = {
   id: string;
-  description?: string; // Make optional
-  price?: number; // Make optional
-  category?: string; // Make optional
+  description?: string;
+  price?: number;
+  category?: string;
 };

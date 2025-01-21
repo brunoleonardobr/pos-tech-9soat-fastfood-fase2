@@ -2,7 +2,7 @@ import ProcessPayment from "../../application/usecases/payment/process-order";
 import { inject } from "../di/registry";
 import HttpServer from "../http/http-server";
 
-export default class PaymentController {
+export default class PaymentApiController {
   @inject("httpServer")
   private readonly httpServer?: HttpServer;
   @inject("processPayment")
@@ -16,11 +16,11 @@ export default class PaymentController {
       "/webhooks/payment/process",
       async (params: any, body: any) => {
         const { orderId, status } = body;
-        const order = await this.processPayment?.execute({
+        await this.processPayment?.execute({
           orderId,
           statusPayment: status,
         });
-        return { message: "Order created successfully", order };
+        return { message: "Order payed successfully" };
       }
     );
   }

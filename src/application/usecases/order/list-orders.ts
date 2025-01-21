@@ -1,19 +1,19 @@
+import OrderItemGateway from "../../../gateways/order-item.gateway";
+import OrderGateway from "../../../gateways/order.gateway";
 import OrdersNotFoundException from "../../exceptions/orders-not-found.exception";
-import OrderItemRepository from "../../repositories/order-item-repository";
-import { OrderRepository } from "../../repositories/order-repository";
 import UseCase from "../use-case";
 
 export default class ListOrders implements UseCase {
   constructor(
-    readonly orderRepository: OrderRepository,
-    readonly orderItemRepository: OrderItemRepository
+    readonly orderGateway: OrderGateway,
+    readonly orderItemGateway: OrderItemGateway
   ) {}
 
   async execute(): Promise<any> {
-    const orders = await this.orderRepository.list();
+    const orders = await this.orderGateway.list();
     if (!orders.length) throw new OrdersNotFoundException();
     for (const order of orders) {
-      order.items = await this.orderItemRepository.getByOrderId(order.id);
+      order.items = await this.orderItemGateway.getByOrderId(order.id);
     }
     return orders;
   }

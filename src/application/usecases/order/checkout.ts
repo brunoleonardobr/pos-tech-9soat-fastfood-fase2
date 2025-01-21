@@ -1,26 +1,25 @@
 import Order from "../../../domain/entities/order";
-import { OrderStatus } from "../../../domain/enums/status.enum";
+import CustomerGateway from "../../../gateways/customer.gateway";
+import OrderItemGateway from "../../../gateways/order-item.gateway";
+import OrderGateway from "../../../gateways/order.gateway";
+import ProductGateway from "../../../gateways/product.gateway";
 import CustomerNotFoundException from "../../exceptions/customer-not-found.exception";
 import InvalidParameterException from "../../exceptions/invalid-parameter.exception";
 import OrderNotSavedException from "../../exceptions/order-not-saved.exception";
 import ProductNotFoundException from "../../exceptions/product-not-found.exception";
-import CustomerRepository from "../../repositories/customer-repository";
-import OrderItemRepository from "../../repositories/order-item-repository";
-import { OrderRepository } from "../../repositories/order-repository";
-import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class Checkout implements UseCase {
   constructor(
-    readonly productRepository: ProductRepository,
-    readonly orderRepository: OrderRepository,
-    readonly orderItemRepository: OrderItemRepository,
-    readonly customerRepository: CustomerRepository
+    readonly productGateway: ProductGateway,
+    readonly orderGateway: OrderGateway,
+    readonly orderItemGateway: OrderItemGateway,
+    readonly customerGateway: CustomerGateway
   ) {}
 
   async execute(input: CheckoutInput): Promise<CheckoutOutput> {
     this.validateInput(input);
-    const client = await this.customerRepository.getById(input.clientId);
+    const client = await this.customerGateway.getById(input.clientId);
     if (!client) {
       throw new CustomerNotFoundException("Client not found");
     }
@@ -33,13 +32,13 @@ export default class Checkout implements UseCase {
 
   private async saveOrderItems(order: Order) {
     await Promise.all(
-      order.items.map((item) => this.orderItemRepository.create(item))
+      order.items.map((item) => this.orderItemGateway.create(item))
     );
   }
 
   private async saveOrder(order: Order) {
     try {
-      await this.orderRepository.create(order);
+      await this.orderGateway.create(order);
     } catch (error: any) {
       throw new OrderNotSavedException(`Order not saved: ${error.message}`);
     }
@@ -47,7 +46,7 @@ export default class Checkout implements UseCase {
 
   private async addItemsToOrder(input: CheckoutInput, order: Order) {
     for (const item of input.items) {
-      const product = await this.productRepository.getById({
+      const product = await this.productGateway.getById({
         id: item.productId,
       });
       if (!product) {

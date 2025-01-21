@@ -1,17 +1,17 @@
 import { ERROR_MESSAGES } from "../../../domain/enums/error-messages.enum";
 import ProductNotFoundException from "../../exceptions/product-not-found.exception";
-import ProductRepository from "../../repositories/product-repository";
+import ProductGateway from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class DeleteProduct implements UseCase {
-  constructor(readonly repository: ProductRepository) {}
+  constructor(readonly productGateway: ProductGateway) {}
 
   async execute(input: Input) {
-    const productExists = await this.repository.getById({ id: input.id });
+    const productExists = await this.productGateway.getById({ id: input.id });
     if (!productExists) {
       throw new ProductNotFoundException(ERROR_MESSAGES.PRODUCT_NOT_FOUND);
     }
-    await this.repository.delete({ id: input.id });
+    await this.productGateway.delete({ id: input.id });
   }
 }
 

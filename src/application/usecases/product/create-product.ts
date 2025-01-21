@@ -1,13 +1,13 @@
 import { Product } from "../../../domain/entities/product";
+import ProductGateway from "../../../gateways/product.gateway";
 import ProductAlreadyExists from "../../exceptions/product-already-exists.exception";
-import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class CreateProduct implements UseCase {
-  constructor(readonly repository: ProductRepository) {}
+  constructor(readonly productGateway: ProductGateway) {}
 
   async execute(input: Input): Promise<Output> {
-    const productSaved = await this.repository.getByDescription({
+    const productSaved = await this.productGateway.getByDescription({
       description: input.description,
     });
     if (productSaved) throw new ProductAlreadyExists();
@@ -16,7 +16,7 @@ export default class CreateProduct implements UseCase {
       input.price,
       input.category
     );
-    await this.repository.create(product);
+    await this.productGateway.create(product);
     return this.mapOutput(product);
   }
 

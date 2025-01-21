@@ -1,13 +1,13 @@
+import ProductGateway from "../../../gateways/product.gateway";
 import ProductsByCategoryNotFoundException from "../../exceptions/products-by-category-not-foud.exception";
-import ProductRepository from "../../repositories/product-repository";
 import UseCase from "../use-case";
 
 export default class ListProductsByCategory implements UseCase {
-  constructor(readonly repository: ProductRepository) {}
+  constructor(readonly productGateway: ProductGateway) {}
 
   async execute(input: Input): Promise<ProductOutput[]> {
     const { category } = input;
-    const products = await this.repository.listByCategory({ category });
+    const products = await this.productGateway.listByCategory({ category });
     if (!products.length) throw new ProductsByCategoryNotFoundException();
     return this.mapProducts(products);
   }
