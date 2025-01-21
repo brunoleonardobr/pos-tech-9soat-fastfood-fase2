@@ -3,8 +3,9 @@
 
 Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Arquitetura de Software da Fiap. O objetivo é criar uma solução para uma empresa de fastfood e automatizar o atendimento.
 
-### Requisitos da segunda fase - alterar a api utilizando Clean Architecture
-
+### Requisitos da segunda fase
+- Refatorar a api usando Clean Architecture
+  <img src="https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/blob/main/clean_architecture.PNG?raw=true"/>
 - Criação do pedido deve retornar identificação do pedido.
 - Consultar status de pagamento pedido, que informa se o pagamento foi aprovado ou não.
 - Webhook para receber confirmação de pagamento aprovado ou recusado. A implementação deve ser clara quanto ao Webhook.
