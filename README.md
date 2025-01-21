@@ -17,7 +17,7 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
      que a cozinha possa iniciar a preparação após o pagamento.
 
 ### Implementação de de deploy utilizando a arquitetura do Kubernetes
-
+<img src="https://raw.githubusercontent.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/refs/heads/main/arquitetura_kubernetes_minikube.PNG?token=GHSAT0AAAAAACWORTHFNPYUBVYVRY6S7UOEZ4PZVMA"/>
 - Ao entregar: Url do github. Nome, usuario do discord e endereço de email
 
 ### Para rodar o sistema
