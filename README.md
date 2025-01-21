@@ -49,26 +49,26 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
 #### 4. Executar os comandos no terminal:
 
 - Banco de dados:
-- Rodar o comando `kubectl create configmap mysql-init-sql --from-file=init.sql`
-- Rodar o comando `kubectl apply -f deployments/database/mysql-pvc.yaml`
-- Rodar o comando `kubectl apply -f deployments/database/mysql-secret.yaml`
-- Rodar o comando `kubectl apply -f deployments/database/mysql-service.yaml`
-- Rodar o comando `kubectl apply -f deployments/database/mysql-statefulset.yaml`
+Rodar o comando `kubectl create configmap mysql-init-sql --from-file=init.sql`
+Rodar o comando `kubectl apply -f deployments/database/mysql-pvc.yaml`
+Rodar o comando `kubectl apply -f deployments/database/mysql-secret.yaml`
+Rodar o comando `kubectl apply -f deployments/database/mysql-service.yaml`
+Rodar o comando `kubectl apply -f deployments/database/mysql-statefulset.yaml`
 
 - Metricas:
-- Rodar o comando `kubectl apply -f deployments/metrics/components.yaml`
+Rodar o comando `kubectl apply -f deployments/metrics/components.yaml`
 
 - Fastfood Api:
-- Rodar o comando `kubectl apply -f deployments/app/fastfood-configmap.yaml`
-- Rodar o comando `kubectl apply -f deployments/app/fastfood-deployment.yaml`
-- Rodar o comando `kubectl apply -f deployments/app/fastfood-hpa.yaml`
-- Rodar o comando `kubectl apply -f deployments/app/fastfood-secret.yaml`
-- Rodar o comando `kubectl apply -f deployments/app/fastfood-service.yaml`
+Rodar o comando `kubectl apply -f deployments/app/fastfood-configmap.yaml`
+Rodar o comando `kubectl apply -f deployments/app/fastfood-deployment.yaml`
+Rodar o comando `kubectl apply -f deployments/app/fastfood-hpa.yaml`
+Rodar o comando `kubectl apply -f deployments/app/fastfood-secret.yaml`
+Rodar o comando `kubectl apply -f deployments/app/fastfood-service.yaml`
 
 #### Criar um tunel de conexao com o minikube:
 
-- Rodar o comando `kubectl port-forward -n default services/fastfood-service 3000:3000`
+Rodar o comando `kubectl port-forward -n default services/fastfood-service 3000:3000`
 
 #### Acessar a documentação do swagger:
 
-- http://localhost:3000/docs/
+http://localhost:3000/docs/
