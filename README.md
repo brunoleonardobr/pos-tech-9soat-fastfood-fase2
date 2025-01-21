@@ -48,22 +48,22 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
 
 #### 4. Executar os comandos no terminal:
 
-- Banco de dados:
-Rodar o comando `kubectl create configmap mysql-init-sql --from-file=init.sql`
-Rodar o comando `kubectl apply -f deployments/database/mysql-pvc.yaml`
-Rodar o comando `kubectl apply -f deployments/database/mysql-secret.yaml`
-Rodar o comando `kubectl apply -f deployments/database/mysql-service.yaml`
-Rodar o comando `kubectl apply -f deployments/database/mysql-statefulset.yaml`
+Banco de dados:
+- Rodar o comando `kubectl create configmap mysql-init-sql --from-file=init.sql`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-pvc.yaml`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-secret.yaml`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-service.yaml`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-statefulset.yaml`
 
-- Metricas:
-Rodar o comando `kubectl apply -f deployments/metrics/components.yaml`
+Metricas:
+- Rodar o comando `kubectl apply -f deployments/metrics/components.yaml`
 
-- Fastfood Api:
-Rodar o comando `kubectl apply -f deployments/app/fastfood-configmap.yaml`
-Rodar o comando `kubectl apply -f deployments/app/fastfood-deployment.yaml`
-Rodar o comando `kubectl apply -f deployments/app/fastfood-hpa.yaml`
-Rodar o comando `kubectl apply -f deployments/app/fastfood-secret.yaml`
-Rodar o comando `kubectl apply -f deployments/app/fastfood-service.yaml`
+Fastfood Api:
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-configmap.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-deployment.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-hpa.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-secret.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-service.yaml`
 
 #### Criar um tunel de conexao com o minikube:
 
