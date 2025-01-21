@@ -3,9 +3,7 @@
 
 Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Arquitetura de Software da Fiap. O objetivo é criar uma solução para uma empresa de fastfood e automatizar o atendimento.
 
-### Refatorar o projetos para Clean Architecture
-
-### Requisitos da segunda fase - alterar a api
+### Requisitos da segunda fase - alterar a api utilizando Clean Architecture
 
 - Criação do pedido deve retornar identificação do pedido.
 - Consultar status de pagamento pedido, que informa se o pagamento foi aprovado ou não.
@@ -18,14 +16,8 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
   1. Todo fluxo do pedido deve ser atualizado, tal informação deverá ser utilizada pela cozinha, garantindo que nenhum pedido seja perdido, e
      que a cozinha possa iniciar a preparação após o pagamento.
 
-### Implementação de arquitetura de kubernets
+### Implementação de de deploy utilizando a arquitetura do Kubernetes
 
-- Requisitos funcionais, escalabilidade, arquivos manifesto, secrets e configmaps, deployment services
-- Entregar um Readme com desenho da arquitetura, com requisitos de negocio e requisitos de arquitetura (fazer sentido com fastfood) e se estou usando minikube ou kubernets
-- No desenho mostrar os serviços todos.
-- Collection das apis
-- Guia completo de execução do projeto funcionando
-- Link pro video com demonstação da arquitetura. Defesa do trabalho mostrando as decisões. Mostrar funcionando.
 - Ao entregar: Url do github. Nome, usuario do discord e endereço de email
 
 ### Para rodar o sistema
