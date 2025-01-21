@@ -18,7 +18,7 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
 
 ### Implementação de de deploy utilizando a arquitetura do Kubernetes
 
-<img src="https://raw.githubusercontent.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/refs/heads/main/arquitetura_kubernetes_minikube.PNG?token=GHSAT0AAAAAACWORTHFNPYUBVYVRY6S7UOEZ4PZVMA"/>
+<img src="https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/blob/main/arquitetura_kubernetes_minikube.PNG?raw=true"/>
 - Ao entregar: Url do github. Nome, usuario do discord e endereço de email
 
 ### Para rodar o sistema
@@ -48,17 +48,17 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
 
 #### 4. Executar os comandos no terminal:
 
-- Banco de dados:
+Banco de dados:
 - Rodar o comando `kubectl create configmap mysql-init-sql --from-file=init.sql`
 - Rodar o comando `kubectl apply -f deployments/database/mysql-pvc.yaml`
 - Rodar o comando `kubectl apply -f deployments/database/mysql-secret.yaml`
 - Rodar o comando `kubectl apply -f deployments/database/mysql-service.yaml`
 - Rodar o comando `kubectl apply -f deployments/database/mysql-statefulset.yaml`
 
-- Metricas:
+Metricas:
 - Rodar o comando `kubectl apply -f deployments/metrics/components.yaml`
 
-- Fastfood Api:
+Fastfood Api:
 - Rodar o comando `kubectl apply -f deployments/app/fastfood-configmap.yaml`
 - Rodar o comando `kubectl apply -f deployments/app/fastfood-deployment.yaml`
 - Rodar o comando `kubectl apply -f deployments/app/fastfood-hpa.yaml`
@@ -67,8 +67,8 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
 
 #### Criar um tunel de conexao com o minikube:
 
-- Rodar o comando `kubectl port-forward -n default services/fastfood-service 3000:3000`
+Rodar o comando `kubectl port-forward -n default services/fastfood-service 3000:3000`
 
 #### Acessar a documentação do swagger:
 
-- http://localhost:3000/docs/
+http://localhost:3000/docs/
