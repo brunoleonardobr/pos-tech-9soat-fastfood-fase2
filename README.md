@@ -18,7 +18,7 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
 
 ### Implementação de de deploy utilizando a arquitetura do Kubernetes
 
-<img src="https://raw.githubusercontent.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/refs/heads/main/arquitetura_kubernetes_minikube.PNG?token=GHSAT0AAAAAACWORTHFNPYUBVYVRY6S7UOEZ4PZVMA"/>
+<img src="https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/blob/main/arquitetura_kubernetes_minikube.PNG?raw=true"/>
 - Ao entregar: Url do github. Nome, usuario do discord e endereço de email
 
 ### Para rodar o sistema
