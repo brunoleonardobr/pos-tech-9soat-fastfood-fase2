@@ -17,17 +17,58 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
      que a cozinha possa iniciar a preparação após o pagamento.
 
 ### Implementação de de deploy utilizando a arquitetura do Kubernetes
+
 <img src="https://raw.githubusercontent.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/refs/heads/main/arquitetura_kubernetes_minikube.PNG?token=GHSAT0AAAAAACWORTHFNPYUBVYVRY6S7UOEZ4PZVMA"/>
 - Ao entregar: Url do github. Nome, usuario do discord e endereço de email
 
 ### Para rodar o sistema
 
-#### É obrigatorio a instalação do docker
+#### 1. Instalar o Docker Desktop no Windows
+
+- Baixe e instale o Docker Desktop: [Download Docker](https://www.docker.com/products/docker-desktop)
+
+#### 2. Instalar o Minikube no Windows
+
+1. Baixe o Minikube: [Download Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
+2. Instale o Minikube.
+3. Inicie o Minikube no terminal:
+   ```bash
+   minikube start --vm-driver=docker
+   ```
+4. Verificar o status da instalação:
+
+```bash
+ minikube status
+```
+
+#### 3. Executar o ambiente
 
 - Clonar o projeto: `git clone https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2.git`
 - Entrar no diretório raiz
-- Rodar o comando `docker compose build`
-- Rodar o comando `docker compose up`
-- Acessar a documentação do swagger http://localhost:3000/docs/
 
-Já existem alguns registros de produtos e clientes para criar pedidos.
+#### 4. Executar os comandos no terminal:
+
+- Banco de dados:
+- Rodar o comando `kubectl create configmap mysql-init-sql --from-file=init.sql`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-pvc.yaml`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-secret.yaml`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-service.yaml`
+- Rodar o comando `kubectl apply -f deployments/database/mysql-statefulset.yaml`
+
+- Metricas:
+- Rodar o comando `kubectl apply -f deployments/metrics/components.yaml`
+
+- Fastfood Api:
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-configmap.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-deployment.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-hpa.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-secret.yaml`
+- Rodar o comando `kubectl apply -f deployments/app/fastfood-service.yaml`
+
+#### Criar um tunel de conexao com o minikube:
+
+- Rodar o comando `kubectl port-forward -n default services/fastfood-service 3000:3000`
+
+#### Acessar a documentação do swagger:
+
+- http://localhost:3000/docs/
