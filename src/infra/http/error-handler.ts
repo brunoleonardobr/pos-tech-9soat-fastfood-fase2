@@ -7,5 +7,6 @@ export const errorHandler = (err: any) => {
       message: `${err.name}: ${err.message}`,
     };
   }
+  console.log(new Date(), err, err.statusCode);
   return { statusCode: 500, message: "Internal Server Error" };
 };
