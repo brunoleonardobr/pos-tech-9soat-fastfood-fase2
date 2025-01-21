@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fastfood
-          image: brunoleonardomg/fastfood-api:v1.1
+          image: brunoleonardomg/fastfood-api:v2.0
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 3000
