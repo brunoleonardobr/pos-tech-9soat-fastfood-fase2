@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mysql
 spec:
@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: mysql
+      name: mysql
     spec:
       containers:
         - name: mysql
@@ -29,6 +30,8 @@ spec:
           ports:
             - containerPort: 3306
           volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
             - name: init-sql
               mountPath: /docker-entrypoint-initdb.d
               readOnly: true
@@ -36,3 +39,6 @@ spec:
         - name: init-sql
           configMap:
             name: mysql-init-sql
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-data
