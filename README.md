@@ -24,7 +24,7 @@ Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Ar
 
 #### É obrigatorio a instalação do docker
 
-- Clonar o projeto: `git clone https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase1.git`
+- Clonar o projeto: `git clone https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2.git`
 - Entrar no diretório raiz
 - Rodar o comando `docker compose build`
 - Rodar o comando `docker compose up`
