@@ -1,6 +1,6 @@
 import { OrderRepository } from "../application/repositories/order-repository";
 import ProcessPayment from "../application/usecases/payment/process-order";
-import PaymentGateway from "../gateways/paymentGateway";
+import OrderGateway from "../gateways/order.gateway";
 import { inject } from "../infra/di/registry";
 
 export default class PaymentController {
@@ -8,8 +8,8 @@ export default class PaymentController {
   private readonly orderRepository!: OrderRepository;
   async processPayment(body: any) {
     const { orderId, status } = body;
-    const paymentGateway = new PaymentGateway(this.orderRepository);
-    const useCase = new ProcessPayment(paymentGateway);
+    const orderGateway = new OrderGateway(this.orderRepository);
+    const useCase = new ProcessPayment(orderGateway);
     await useCase.execute({ orderId, statusPayment: status });
   }
 }
