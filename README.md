@@ -3,8 +3,7 @@
 
 Projeto desenvolvido para o desafio técnico pro curso de Pós-graduação em Arquitetura de Software da Fiap. O objetivo é criar uma solução para uma empresa de fastfood e automatizar o atendimento.
 Problema: Uma lanchonete de bairro está com dificuldades para gerenciar seus pedidos e eles precisam modernizar para atender com qualidade seus clientes. É necessário criar um sistema de auto-atendimento através de um totem disposto na lanchonete para que o cliente consiga de forma autônoma, escolher seu pedido, realizar o pagamento e acompanhar seu pedido. Enquanto isso, o sistema na cozinha na cozinha mostra os pedidos a serem realizados e atualiza quando o pedido inicia a preparação e é finalizado. Quando finalizado o cliente deve ser notificado.
-
-https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/blob/main/arquitetura_problema.PNG?raw=true
+<img src="https://github.com/brunoleonardobr/pos-tech-9soat-fastfood-fase2/blob/main/arquitetura_problema.PNG"/>
 
 ### Requisitos da segunda fase
 - Refatorar a api usando Clean Architecture
